@@ -1,0 +1,25 @@
+# With SMTP
+IP1=IPorDNSnameOfNode
+HOSTIP=$(hostname -i)
+ADMIN_EMAIL=opdk@apigee.com
+APIGEE_ADMINPW=Secret123
+LICENSE_FILE=/tmp/license.txt
+MSIP=$IP1
+LDAP_TYPE=1
+APIGEE_LDAPPW=secret
+BIND_ON_ALL_INTERFACES=y
+MP_POD=gateway
+REGION=dc-1
+ZK_HOSTS="$IP1"
+ZK_CLIENT_HOSTS="$IP1"
+CASS_HOSTS="$IP1"
+# Default is postgres
+PG_PWD=postgres
+SKIP_SMTP=y
+SMTPHOST=smtp.example.com
+SMTPUSER=smtp@example.com  
+# omit for no username
+SMTPPASSWORD=smtppwd    
+# omit for no password
+SMTPSSL=n
+SMTPPORT=25
