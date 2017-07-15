@@ -1,0 +1,105 @@
+# Example YAML to get you started quickly.
+# Be aware that YAML has indentation based coping.
+# Code completion support is available so start typing for available options.
+swagger: '2.0'
+
+# This is your document metadata
+info:
+  version: "1.0"
+  title: Sun Life API
+  description: |
+    APIs for Sun Life 
+    
+host: apac-demo4-test.apigee.net
+basePath: /sunlife/v1
+
+paths:
+
+  /lifews/policy/{policy_id}:
+    get:
+      parameters:
+        - name: policy_id
+          in: path
+          description: Policy ID
+          required: true
+          type: string
+          format: string
+        - name: Authorization
+          in: header
+          description: Access Token
+          required: true
+          type: string
+          format: string  
+        - name: Cache-control
+          in: header
+          default: no-cache
+          type: string
+          format: string           
+          
+      responses:
+        '200':
+          description: successful operation
+        '204':
+          description: no return data
+          
+  /lifewsauth/login:
+    post:
+      consumes:
+        - application/x-www-form-urlencoded
+      parameters:
+        - name: Authorization
+          in: header
+          description: Base64 encoded client id/key
+          required: true
+          type: string
+          format: string  
+        - name: Cache-control
+          in: header
+          default: no-cache
+          type: string
+          format: string  
+        - in: formData
+          name: grant_type
+          type: string
+	  default: password
+          description: Grant Type
+        - in: formData
+          name: username
+          type: string
+          description: Username
+        - in: formData
+          name: password
+          type: string
+          description: Password
+          
+      responses:
+        200:
+          description: OK
+          
+  /lifews/updateProfile:
+    post:
+      consumes:
+        - multipart/form-data
+      parameters:
+        - name: Authorization
+          in: header
+          description: Access Token
+          required: true
+          type: string
+          format: string  
+        - name: Cache-control
+          in: header
+          default: no-cache
+          type: string
+          format: string 
+        - in: formData
+          name: upfile
+          type: file
+          required: true
+          description: The file to upload.
+ 
+      responses:
+        200:
+          description: OK
+          
+
